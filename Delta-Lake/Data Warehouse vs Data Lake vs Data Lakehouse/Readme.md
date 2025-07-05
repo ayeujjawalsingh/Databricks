@@ -1,9 +1,3 @@
-# 📘 Data Warehouse vs Data Lake vs Data Lakehouse
-
-This document explains the core differences between **Data Warehouse**, **Data Lake**, and **Data Lakehouse**, along with how **ETL** and **ELT** work in each. It also covers how tools like **Delta Lake** and **Databricks** connect into the Lakehouse architecture.
-
----
-
 ## 🔹 What is a Data Warehouse?
 
 A **Data Warehouse** is a centralized repository that stores **cleaned and structured data** for **analytics, dashboards, and reporting**.
