@@ -209,10 +209,3 @@ GROUP BY DATE(order_ts), region
 * Medallion Architecture = **Bronze + Silver + Gold**
 * It's a **structured, layered approach** to handle raw to business-level data
 * Helps you build **scalable**, **clean**, and **collaborative** data pipelines
-
----
-
-```
-
-Let me know if you want a diagram image for the architecture or want the same content in a PDF format.
-```
