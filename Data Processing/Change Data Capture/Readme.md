@@ -1,154 +1,185 @@
-# 📘 Delta Change Feed (CDC) in Databricks
+# 📘 Change Data Capture (CDC) using Delta Lake CDF in Databricks
 
-Delta Change Feed (DCF) allows you to **capture row-level changes** (INSERT, UPDATE, DELETE) in Delta tables. It helps in building **incremental pipelines** where you read only the changed data, instead of scanning the full table.
+This guide explains how to track, read, and apply **only changed data (INSERT/UPDATE/DELETE)** using **Delta Lake Change Data Feed (CDF)**. It covers:
 
----
-
-## 📌 Why Use Delta Change Feed?
-
-| Benefit                          | Description                                              |
-|----------------------------------|----------------------------------------------------------|
-| ✅ Incremental Reads             | Read only rows that changed (not the entire dataset)     |
-| ✅ Track Change Type             | Know if the row was inserted, updated, or deleted        |
-| ✅ Efficient for ETL             | Reduces cost and processing time                         |
-| ✅ Supports Streaming            | Can be used with structured streaming for real-time use  |
-| ✅ Works with Delta Tables       | Built-in support in Delta Lake with transaction logs     |
+- ✅ What is CDC and why it matters
+- ✅ How Delta CDF works
+- ✅ How to process the CDC feed in batch or streaming
+- ✅ Real examples and use cases
 
 ---
 
-## 🧠 How Delta Change Feed Works
+## 🔍 What is Change Data Capture (CDC)?
 
-Delta Lake stores all changes to a table in **delta logs** (versioned commits). When DCF is enabled:
-
-- Every change (insert/update/delete) is recorded
-- Metadata like `_change_type`, `_commit_version`, `_commit_timestamp` is tracked
-- You can query this changed data using Spark (batch or streaming)
+**Change Data Capture (CDC)** is a way to track and apply only the **changes** (inserts, updates, deletes) made to a table — without reprocessing the entire data.
 
 ---
 
-## 🛠️ Step-by-Step Implementation
+### 📦 Why is CDC useful?
 
-### ✅ Step 1: Enable Change Data Feed
+| Feature        | Benefit                                                       |
+|----------------|---------------------------------------------------------------|
+| ⏱️ Faster       | Reads only the rows that have changed                        |
+| 💰 Cost-effective | Saves compute resources and storage                         |
+| 🔁 Incremental | Keeps downstream tables and reports updated in real-time      |
+| ✅ Scalable     | Works well with large datasets and layered architectures      |
+
+---
+
+## 🧠 What is Delta Lake Change Data Feed (CDF)?
+
+Delta Lake **CDF** is a feature that enables **CDC natively** on Delta tables. When enabled, it captures all changes made to a table (insert/update/delete) and allows you to query only the **changed rows**.
+
+---
+
+## 🧱 Architecture Flow
+
+```
+
+Source Delta Table (CDF Enabled)
+⬇️
+Read Only Changed Rows (by Version/Time)
+⬇️
+Detect Change Type (\_change\_type)
+⬇️
+Apply to Target Table (using MERGE or Logic)
+
+```
+
+---
+
+## 🛠️ Step-by-Step: Enable & Use CDC with Delta CDF
+
+---
+
+### ✅ Step 1: Enable Change Data Feed on the Table
 
 ```sql
-ALTER TABLE <your_table_name>
+ALTER TABLE <your_table>
 SET TBLPROPERTIES (
   delta.enableChangeDataFeed = true
 );
-```
+````
 
-> 🔸 Must be done **before** you want to track changes.
+> 🔹 Do this before you write any changes — only future changes will be tracked.
 
 ---
 
-### ✅ Step 2: Perform Some Changes
+### ✅ Step 2: Write Some Changes (Insert/Update/Delete)
 
 ```sql
 -- Insert
-INSERT INTO <your_table_name> VALUES (101, 'Amit', 'Pune');
+INSERT INTO your_table VALUES (101, 'Amit', 'Pune');
 
 -- Update
-UPDATE <your_table_name> SET city = 'Mumbai' WHERE customer_id = 101;
+UPDATE your_table SET city = 'Mumbai' WHERE customer_id = 101;
 
 -- Delete
-DELETE FROM <your_table_name> WHERE customer_id = 101;
+DELETE FROM your_table WHERE customer_id = 101;
 ```
-
-These changes will be captured in Delta logs.
 
 ---
 
 ### ✅ Step 3: Read the Changed Data
 
-#### 🧾 Batch Read Example
+#### 🧾 Batch Mode
 
 ```python
-df_changes = spark.read.format("delta") \
+cdc_df = spark.read.format("delta") \
     .option("readChangeData", "true") \
-    .option("startingVersion", 10) \
-    .table("your_table_name")
+    .option("startingVersion", 5) \
+    .table("your_table")
 ```
 
-#### 🧾 Sample Output
-
-| customer\_id | name | city   | \_change\_type |
-| ------------ | ---- | ------ | -------------- |
-| 101          | Amit | Pune   | insert         |
-| 101          | Amit | Mumbai | update         |
-| 101          | null | null   | delete         |
+> Use `startingVersion` or `startingTimestamp` to define how far back you want to track changes.
 
 ---
 
-### ✅ Step 4: Apply Changes Using `MERGE INTO`
+### ✅ Step 4: Process CDC Feed Using `MERGE INTO`
 
 ```python
-df_changes.createOrReplaceTempView("delta_cdc")
+cdc_df.createOrReplaceTempView("cdc_data")
 
 spark.sql("""
 MERGE INTO target_table AS tgt
-USING delta_cdc AS src
+USING cdc_data AS src
 ON tgt.customer_id = src.customer_id
 
-WHEN MATCHED AND src._change_type = 'update' THEN UPDATE SET *
-WHEN MATCHED AND src._change_type = 'delete' THEN DELETE
-WHEN NOT MATCHED AND src._change_type = 'insert' THEN INSERT *
+WHEN MATCHED AND src._change_type = 'update' THEN
+  UPDATE SET *
+
+WHEN MATCHED AND src._change_type = 'delete' THEN
+  DELETE
+
+WHEN NOT MATCHED AND src._change_type = 'insert' THEN
+  INSERT *
 """)
 ```
 
-This keeps your target table up-to-date with only changed data.
+This keeps your **target table updated** with minimal cost and effort.
 
 ---
 
-### ✅ Step 5: (Optional) Use Delta Change Feed in Streaming
+### ✅ Step 5 (Optional): Stream CDC Feed in Real-Time
 
 ```python
 stream_df = spark.readStream.format("delta") \
     .option("readChangeData", "true") \
-    .option("startingVersion", 45) \
-    .table("your_table_name")
+    .option("startingVersion", 20) \
+    .table("your_table")
+
+# You can apply the same MERGE logic in foreachBatch()
 ```
 
-This lets you process the changes in real time, ideal for streaming pipelines.
+---
+
+## 🧾 Sample Output from CDF
+
+| customer\_id | name | city   | \_change\_type | \_commit\_version |
+| ------------ | ---- | ------ | -------------- | ----------------- |
+| 101          | Amit | Pune   | insert         | 5                 |
+| 101          | Amit | Mumbai | update         | 6                 |
+| 101          | NULL | NULL   | delete         | 7                 |
 
 ---
 
-## 📊 Metadata Columns Added by DCF
+## 📊 Metadata Columns Added by CDF
 
-| Column Name         | Description                                  |
-| ------------------- | -------------------------------------------- |
-| `_change_type`      | Type of change: `insert`, `update`, `delete` |
-| `_commit_version`   | Delta log version where change occurred      |
-| `_commit_timestamp` | Timestamp when the change was committed      |
+| Column              | Description                             |
+| ------------------- | --------------------------------------- |
+| `_change_type`      | `insert`, `update`, or `delete`         |
+| `_commit_version`   | Delta version where the change occurred |
+| `_commit_timestamp` | When the change was committed           |
 
 ---
 
-## 💡 Use Cases of Delta Change Feed
+## 📌 Use Cases of CDC + Delta CDF
 
-| Use Case                            | Purpose                                                |
-| ----------------------------------- | ------------------------------------------------------ |
-| 🔄 Incremental ETL Pipelines        | Load only changed data                                 |
-| 📊 Real-Time Dashboards             | Always show fresh, accurate data                       |
-| 🔁 Data Replication / Sync          | Copy changes to other systems like Redshift, Snowflake |
-| 📂 Audit & Version Tracking         | Know what changed, when, and why                       |
-| 🚀 Bronze → Silver → Gold Pipelines | Efficiently propagate changes across layers            |
+| Use Case                                           | Purpose                                  |
+| -------------------------------------------------- | ---------------------------------------- |
+| ⏩ Incremental ETL Pipelines                        | Load only changed rows                   |
+| 📊 Real-Time Dashboards                            | Keep visualizations up-to-date           |
+| 🔁 Sync to External Warehouses                     | Replicate changes to Redshift, Snowflake |
+| 🧾 Auditing / Compliance                           | Know exactly what changed and when       |
+| 🪄 Medallion Architecture (Bronze → Silver → Gold) | Efficient change propagation             |
 
 ---
 
 ## ⚠️ Things to Keep in Mind
 
-* Change feed is only available **after you enable it**.
-* You must provide a **starting version** when querying changes.
-* Deletes return rows with `null` values and `_change_type = 'delete'`.
-* It’s only supported on **Delta tables**, not standard Parquet or CSV.
+* You must enable `delta.enableChangeDataFeed = true` before it works.
+* You must define `startingVersion` or `startingTimestamp` to query.
+* Deleted rows will have `NULL` values (except for primary key).
+* CDF is available **only on Delta tables**, not Parquet or external formats.
 
 ---
 
-## 🧠 Summary
+## ✅ Summary
 
-| Feature              | Description                                 |
-| -------------------- | ------------------------------------------- |
-| Purpose              | Track and process changes in Delta tables   |
-| Supported Operations | `INSERT`, `UPDATE`, `DELETE`                |
-| Usage Type           | Batch and Streaming                         |
-| Trigger              | Enable with table property                  |
-| Integration          | Works with `MERGE INTO` and Spark Streaming |
+| Topic           | Summary                                   |
+| --------------- | ----------------------------------------- |
+| What is CDC?    | Capturing only changed data rows          |
+| What is CDF?    | Delta Lake feature to track those changes |
+| How to Use?     | Enable → Modify → Read → Apply            |
+| Output Includes | `_change_type`, `_commit_version`, etc.   |
+| Supported Modes | Batch and Streaming                       |
