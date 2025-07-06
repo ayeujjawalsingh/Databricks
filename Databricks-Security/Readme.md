@@ -199,5 +199,3 @@ Unity Catalog is Databricks' **centralized data governance layer** that provides
 ## 🧠 Final Note
 
 Databricks’ layered security and governance features provide flexibility and fine-grained control over data access. With the help of secret scopes, dynamic views, and Unity Catalog, organizations can securely scale analytics across teams while ensuring data privacy and compliance.
-
-```
