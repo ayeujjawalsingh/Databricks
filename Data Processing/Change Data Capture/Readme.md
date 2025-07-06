@@ -1,4 +1,4 @@
-# 📘 Complete Guide to Change Data Capture (CDC) using Delta Lake CDF in Databricks
+# 📘 Change Data Capture (CDC) using Delta Lake CDF in Databricks
 
 This document provides a complete end-to-end understanding of **Change Data Capture (CDC)** in Databricks using **Delta Lake’s Change Data Feed (CDF)**.
 
