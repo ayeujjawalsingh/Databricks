@@ -1,6 +1,6 @@
 # 📘 Databricks Essentials for Data Engineers
 
-This document provides detailed notes every Data Engineer must know to work with **Databricks Workspace**, **Clusters**, **Notebooks**, and **Library Installation**.
+This document provides detailed notes of **Databricks Workspace**, **Clusters**, **Notebooks**, and **Library Installation**.
 
 ---
 
