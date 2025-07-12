@@ -1,8 +1,4 @@
-# 📘 Simple Explanation of Databricks Architecture Terms
-
-This document provides a beginner-friendly explanation of key Databricks components and architecture terms that every data engineer should understand.
-
----
+# 📘 Databricks Architecture Terms
 
 ## 🔷 1. Control Plane
 
