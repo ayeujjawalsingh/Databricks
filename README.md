@@ -11,21 +11,43 @@ Welcome to the **Databricks Knowledge Base**!
 
 ---
 
-## 📊 BI & Data Visualization
+## 🧰 Utilities
 
-### 🔹 BI Tools Integration
-- 📄 [BI Tools Integration Overview](https://github.com/ayeujjawalsingh/Databricks/blob/main/BI%20Tools%20Integration/Readme.md)
+### 🔹 Databricks Services
+- 📄 [Services Overview](https://github.com/ayeujjawalsingh/Databricks/blob/main/Databricks-Services/Readme.md)
+- 📄 [DBFS, DBUTILS, Magic Commands, and Widgets](https://github.com/ayeujjawalsingh/Databricks/blob/main/Databricks-Services/DBFS%2C%20DBUTILS%2C%20Magic%20Commands%2C%20and%20Widgets/Readme.md)
 
 ---
 
-## 🛡️ Data Governance & Security
+## 🧱 Lakehouse & Delta Lake
 
-### 🔹 Data Governance (Manage Permission)
-- 📄 [Unity Catalog](https://github.com/ayeujjawalsingh/Databricks/blob/main/Data%20Governance%20(Manage%20Permission)/Unity%20Catalog/Readme.md)
-- 📄 [Users, Groups, Access Control, and Delta Sharing](https://github.com/ayeujjawalsingh/Databricks/blob/main/Data%20Governance%20(Manage%20Permission)/Users%2C%20Groups%2C%20Access%20Control%2C%20and%20Delta%20Sharing/Readme.md)
+### 🔹 Delta Lake
+- 📄 [Overview](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Readme.md)
+- 📄 [DML (INSERT, UPDATE, DELETE, MERGE)](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/DML(INSERT%2C%20UPDATE%2C%20DELETE%2C%20and%20MERGE)/Readme.md)
+- 📄 [Data Warehouse vs Lake vs Lakehouse](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Data%20Warehouse%20vs%20Data%20Lake%20vs%20Data%20Lakehouse/Readme.md)
+- 📄 [Delta Table Types and Features](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Delta%20Table%20Types(Managed%20and%20External%20Table)%20(Creation%2C%20Partitioning%2C%20Schema%20Evolution%2C%20Optimization)/Readme.md)
+- 📄 [Delta Transaction Logs](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Delta%20Transaction%20Logs/Readme.md)
+- 📄 [History](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/History/Readme.md)
+- 📄 [Incremental ETL](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Incremental%20ETL%20with%20Delta/Readme.md)
+- 📄 [Medallion Lakehouse Architecture](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Medallion%20Lakehouse%20Architecture/Readme.md)
+- 📄 [OPTIMIZE and Z-ORDER](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/OPTIMIZE%20and%20Z-ORDER/Readme.md)
+- 📄 [Parquet Table to Delta Table](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Parquet%20Table%20to%20Delta%20Table/Readme.md)
+- 📄 [Pitfalls of Data Lakes](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Pitfalls%20of%20Data%20Lakes/Readme.md)
+- 📄 [Time Travel](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Time-Travel/Readme.md)
+- 📄 [Vacuum](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Vacuum/Readme.md)
 
-### 🔹 Databricks Security
-- 📄 [Security Overview](https://github.com/ayeujjawalsingh/Databricks/blob/main/Databricks-Security/Readme.md)
+---
+
+## 🧩 Data Management
+
+### 🔹 Modelling Data Management Solutions
+- 📄 [Autoload into Multiplex Bronze](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Autoload%20into%20Multiplex%20Bronze/Readme.md)
+- 📄 [Bronze Ingestion Patterns](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Bronze%20Ingestion%20Patterns/Readme.md)
+- 📄 [Quality Enforcement](https://github.com/ayeujjawalsingh/Databricks/tree/main/Modelling%20Data%20Management%20Solutions/Quality%20Enforcement/Readme.md)
+- 📄 [Slowly Changing Dimensions (SCD)](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Slowly%20Changing%20Dimensions%20(SCD)/Readme.md)
+- 📄 [Streaming Deduplication](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Streaming%20Deduplication/Readme.md)
+- 📄 [Streaming from Multiplex Bronze](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Streaming%20from%20Multiplex%20Bronze/Reamd.md)
+- 📄 [Type 2 SCD](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Type%202%20SCD/Readme.md)
 
 ---
 
@@ -57,6 +79,17 @@ Welcome to the **Databricks Knowledge Base**!
 
 ---
 
+## 🛡️ Data Governance & Security
+
+### 🔹 Data Governance (Manage Permission)
+- 📄 [Unity Catalog](https://github.com/ayeujjawalsingh/Databricks/blob/main/Data%20Governance%20(Manage%20Permission)/Unity%20Catalog/Readme.md)
+- 📄 [Users, Groups, Access Control, and Delta Sharing](https://github.com/ayeujjawalsingh/Databricks/blob/main/Data%20Governance%20(Manage%20Permission)/Users%2C%20Groups%2C%20Access%20Control%2C%20and%20Delta%20Sharing/Readme.md)
+
+### 🔹 Databricks Security
+- 📄 [Security Overview](https://github.com/ayeujjawalsingh/Databricks/blob/main/Databricks-Security/Readme.md)
+
+---
+
 ## 🔧 Tooling & DevOps
 
 ### 🔹 Databricks Tooling
@@ -69,23 +102,10 @@ Welcome to the **Databricks Knowledge Base**!
 - 📄 [Testing & CI/CD](https://github.com/ayeujjawalsingh/Databricks/blob/main/Testing%20and%20Deployment/Readme.md)
 
 ---
+## 📊 BI & Data Visualization
 
-## 🧱 Lakehouse & Delta Lake
-
-### 🔹 Delta Lake
-- 📄 [Overview](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Readme.md)
-- 📄 [DML (INSERT, UPDATE, DELETE, MERGE)](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/DML(INSERT%2C%20UPDATE%2C%20DELETE%2C%20and%20MERGE)/Readme.md)
-- 📄 [Data Warehouse vs Lake vs Lakehouse](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Data%20Warehouse%20vs%20Data%20Lake%20vs%20Data%20Lakehouse/Readme.md)
-- 📄 [Delta Table Types and Features](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Delta%20Table%20Types(Managed%20and%20External%20Table)%20(Creation%2C%20Partitioning%2C%20Schema%20Evolution%2C%20Optimization)/Readme.md)
-- 📄 [Delta Transaction Logs](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Delta%20Transaction%20Logs/Readme.md)
-- 📄 [History](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/History/Readme.md)
-- 📄 [Incremental ETL](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Incremental%20ETL%20with%20Delta/Readme.md)
-- 📄 [Medallion Lakehouse Architecture](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Medallion%20Lakehouse%20Architecture/Readme.md)
-- 📄 [OPTIMIZE and Z-ORDER](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/OPTIMIZE%20and%20Z-ORDER/Readme.md)
-- 📄 [Parquet Table to Delta Table](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Parquet%20Table%20to%20Delta%20Table/Readme.md)
-- 📄 [Pitfalls of Data Lakes](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Pitfalls%20of%20Data%20Lakes/Readme.md)
-- 📄 [Time Travel](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Time-Travel/Readme.md)
-- 📄 [Vacuum](https://github.com/ayeujjawalsingh/Databricks/blob/main/Delta-Lake/Vacuum/Readme.md)
+### 🔹 BI Tools Integration
+- 📄 [BI Tools Integration Overview](https://github.com/ayeujjawalsingh/Databricks/blob/main/BI%20Tools%20Integration/Readme.md)
 
 ---
 
@@ -94,21 +114,5 @@ Welcome to the **Databricks Knowledge Base**!
 ### 🔹 High Availability and Disaster Recovery
 - 📄 [HA and DR](https://github.com/ayeujjawalsingh/Databricks/blob/main/High%20Availability%20%20and%20Disaster%20Recovery/Readme.md)
 
-### 🔹 Modelling Data Management Solutions
-- 📄 [Autoload into Multiplex Bronze](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Autoload%20into%20Multiplex%20Bronze/Readme.md)
-- 📄 [Bronze Ingestion Patterns](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Bronze%20Ingestion%20Patterns/Readme.md)
-- 📄 [Quality Enforcement](https://github.com/ayeujjawalsingh/Databricks/tree/main/Modelling%20Data%20Management%20Solutions/Quality%20Enforcement/Readme.md)
-- 📄 [Slowly Changing Dimensions (SCD)](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Slowly%20Changing%20Dimensions%20(SCD)/Readme.md)
-- 📄 [Streaming Deduplication](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Streaming%20Deduplication/Readme.md)
-- 📄 [Streaming from Multiplex Bronze](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Streaming%20from%20Multiplex%20Bronze/Reamd.md)
-- 📄 [Type 2 SCD](https://github.com/ayeujjawalsingh/Databricks/blob/main/Modelling%20Data%20Management%20Solutions/Type%202%20SCD/Readme.md)
-
 ---
 
-## 🧰 Utilities
-
-### 🔹 Databricks Services
-- 📄 [Services Overview](https://github.com/ayeujjawalsingh/Databricks/blob/main/Databricks-Services/Readme.md)
-- 📄 [DBFS, DBUTILS, Magic Commands, and Widgets](https://github.com/ayeujjawalsingh/Databricks/blob/main/Databricks-Services/DBFS%2C%20DBUTILS%2C%20Magic%20Commands%2C%20and%20Widgets/Readme.md)
-
----
