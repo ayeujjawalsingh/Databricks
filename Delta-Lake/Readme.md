@@ -1,4 +1,4 @@
-# 📘 Delta Lake - Complete Notes
+# 📘 Delta Lake
 
 Delta Lake is an open-source storage layer that brings **ACID transactions**, **scalability**, and **data reliability** to big data workloads. It runs on top of existing data lakes like **S3, ADLS, GCS**, and supports **Apache Spark** and **Databricks**.
 
