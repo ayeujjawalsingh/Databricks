@@ -1,4 +1,4 @@
-# 🧠 Delta Table Types (Creation, Partitioning, Schema Evolution, Optimization)
+# 🧠 Delta Table Types and Creation, Partitioning, Schema Evolution, Optimization
 
 Delta Lake is an open-source storage layer that brings ACID transactions, scalable metadata, and unifies batch + streaming workloads to Apache Spark and Databricks.
 
@@ -125,6 +125,7 @@ df.write.format("delta").mode("append").save("/mnt/data/employee_external")
 
 ### ✅ What is Partitioning?
 
+* Partitioning is a way to organize large tables into smaller, manageable pieces based on the value of one or more columns — like splitting data by year, country, or department.
 * Organizes data into **directory structure** by column values.
 * Improves **query speed** by pruning folders.
 
@@ -171,6 +172,8 @@ Only `/country=India/` folder is scanned.
 ### ✅ What is Schema Evolution?
 
 Allows new columns to be added without recreating the table.
+
+It allows my table’s structure to grow over time — for example, adding new columns without rewriting old data. I just enable **mergeSchema=true**, and Delta automatically merges the new schema with the existing one. This is especially useful in streaming or evolving datasets.
 
 ### ✅ PySpark Example
 
