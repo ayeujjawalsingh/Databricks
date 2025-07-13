@@ -2,6 +2,10 @@
 
 ## 📘 What is Autoloader?
 
+> Autoloader is a tool in Databricks that automatically picks up new files from cloud storage like S3, ADLS, or Azure Blob, and loads only the new data into your pipeline or table — without reprocessing old files.
+
+You don't have to manually check folders or write complex logic to detect new files — Autoloader does it for you.
+
 Autoloader is a feature in **Databricks** that:
 
 - 🚀 Automatically loads **new files** from cloud storage (like AWS S3 or Azure ADLS)
