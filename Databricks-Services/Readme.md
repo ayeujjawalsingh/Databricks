@@ -8,7 +8,7 @@ This document provides detailed notes of **Databricks Workspace**, **Clusters**,
 
 ### 🔹 What is a Databricks Workspace?
 
-A **Databricks workspace** is a centralized environment in the cloud for collaborative development and execution of data engineering, data science, and analytics workflows. It integrates tools like notebooks, jobs, clusters, libraries, and version control under one unified UI.
+**Databricks workspace** is the main user interface (UI) where data engineers, data scientists, and analysts can collaborate, write code, run notebooks, manage jobs, and access data and clusters — all in one place.
 
 ### 🔹 Key Components in a Workspace
 
