@@ -168,7 +168,7 @@ dbutils.widgets.removeAll()              # Remove all widgets
 
 ---
 
-## ✅ Summary for Data Engineers
+## ✅ Summary
 
 | Feature            | Description                                                 | Use Cases                                       |
 | ------------------ | ----------------------------------------------------------- | ----------------------------------------------- |
