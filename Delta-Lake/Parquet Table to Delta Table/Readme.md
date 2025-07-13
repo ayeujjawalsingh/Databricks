@@ -122,7 +122,7 @@ SELECT * FROM your_table_name;
 
 ---
 
-## 🧪 Bonus: PySpark Code Example
+## 🧪 PySpark Code Example
 
 ```python
 from delta.tables import DeltaTable
